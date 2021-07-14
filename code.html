@@ -27,7 +27,7 @@
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/index.html">JS Template</a>
+            <a class="navbar-brand" href="/index.html">FIZZ BUZZ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -51,11 +51,81 @@
         </div>
     </nav>
 
-    <main class="flex-shrink-0">
-        <div class="container">
-            <h1 class="mt-5">Template with dark fixed navbar and sticky footer</h1>
-            <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and
-                CSS. A fixed navbar has been added with padding-top: 60px; on the main > .container.</p>
+    <main id="content" class="flex-shrink-0">
+        <div class="container col-xxl-8 px-4 py-5 mt-5">
+            <h2 class="border-1 border-bottom border-dark">The Code</h2>
+            <div class="row">
+                <div class="col-lg-8 col-sm-12">
+                    <pre class="line-numbers "><code class="language-javascript">
+function getValues() {
+let fizzValue = document.getElementById("fizzValue").value;
+let buzzValue = document.getElementById("buzzValue").value;
+
+fizzValue = parseInt(fizzValue);
+buzzValue = parseInt(buzzValue);
+
+if (Number.isInteger(fizzValue) && Number.isInteger(buzzValue)) {
+let fbArray = fizzBuzz(fizzValue, buzzValue);
+displayData(fbArray);
+} else {
+alert("you must enter an integer")
+}
+
+}
+
+
+function fizzBuzz(fizzValue, buzzValue) {
+let returnArray = [];
+
+for (let i = 1; i <= 100; i++) { if (i % fizzValue==0 && i % buzzValue==0) { returnArray.push("FizzBuzz"); } else if (i
+    % fizzValue==0) { returnArray.push("Fizz"); } else if (i % buzzValue==0) { returnArray.push("Buzz"); } else {
+    returnArray.push(i); } } return returnArray; } function displayData(fbArray) { let
+    tableBody=document.getElementById("results"); let templateRow=document.getElementById("fbTemplate");
+    tableBody.innerHTML=" " ; for (let index=0; index < fbArray.length; index +=5) { let
+    tableRow=document.importNode(templateRow.content, true); let rowCols=tableRow.querySelectorAll("td");
+    rowCols[0].textContent=fbArray[index]; rowCols[1].textContent=fbArray[index + 1];
+    rowCols[2].textContent=fbArray[index + 2]; rowCols[3].textContent=fbArray[index + 3];
+    rowCols[4].textContent=fbArray[index + 4]; tableBody.appendChild(tableRow); } }
+ 
+</code>
+</pre>
+                </div>
+                <div class="col-lg-4 col-sm-12">
+                    <p>The code is structured in three functions.</p>
+                    <h5>getValues</h5>
+                    <p>getValues accepts(gets) the user input from the page. It utilizes
+                        <strong>getElementById</strong>
+                        to pull the values from the page. It passes those values to the
+                        <strong>generateNumbers</strong>
+                        function. The function <strong>generateNumbers</strong> returns an array of values and
+                        passes
+                        that array to the <strong>displayNumbers</strong> function.</p>
+                    <h5>generateNumbers</h5>
+                    <p>generateNumbers takes in two parameters startValue and endValue. We create a variable
+                        (numbers)
+                        that holds an array. A for loop is used to generate all of the numbers between
+                        <strong>startValue</strong> and <strong>endValue</strong></p>
+                    <h5>displayNumbers</h5>
+                    <p>displayNumbers takes in one parameter numbers. The variable numbers is an array the holds
+                        values
+                        between <strong>startValue</strong> and <strong>endValue</strong>. We create a variable
+                        (className) that holds the name of a CSS class that we will use to bold the numbers. We
+                        create a
+                        variable templateRows that will hold the html we will write to the page.</p>
+                    <p>A for loop is used to check all of the numbers to see if they are even or odd. The remainder
+                        operator
+                        (%) is used to see if the number is divisable by two. If it returns zero the it is even. If
+                        not
+                        (else) its odd.
+                        The
+                        correct className is injected into the html row for display. Each interation of the loop
+                        adds to
+                        the teamplateRows variable. At the end of the loop the resulting HTML rows are written to
+                        the
+                        page.
+                    </p>
+                </div>
+            </div>
         </div>
     </main>
 
